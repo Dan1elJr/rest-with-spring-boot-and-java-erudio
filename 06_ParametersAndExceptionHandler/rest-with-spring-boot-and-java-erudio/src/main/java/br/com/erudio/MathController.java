@@ -32,7 +32,7 @@ public class MathController {
 		if(strNumber== null) return 0D;
 		String number = strNumber.replaceAll(",", ".");
 		if(isNumeric(number)) return Double.parseDouble(number);
-		return null;
+		return 0D;
 	}
 
 	private boolean isNumeric(String strNumber) {
