@@ -28,6 +28,74 @@ public class MathController {
 		return convertToDouble(numberOne) + convertToDouble(numberTwo);
 	}
 	
+	@RequestMapping(value="/dif/{numberOne}/{numberTwo}")
+	public Double dif (
+			@PathVariable(value="numberOne")String numberOne,		
+			@PathVariable(value="numberTwo")String numberTwo) throws Exception{
+		
+		if(!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+			throw new UnsupportedMathOperationException("Please set a numeric value");
+		}
+		
+		return convertToDouble(numberOne) - convertToDouble(numberTwo);
+	}
+	
+	@RequestMapping(value="/mult/{numberOne}/{numberTwo}")
+	public Double mult (
+			@PathVariable(value="numberOne")String numberOne,		
+			@PathVariable(value="numberTwo")String numberTwo) throws Exception{
+		
+		if(!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+			throw new UnsupportedMathOperationException("Please set a numeric value");
+		}
+		
+		return convertToDouble(numberOne) * convertToDouble(numberTwo);
+	}
+	
+	
+	@RequestMapping(value="/div/{numberOne}/{numberTwo}")
+	public Double div (
+			@PathVariable(value="numberOne")String numberOne,		
+			@PathVariable(value="numberTwo")String numberTwo) throws Exception{
+		
+		if(!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+			throw new UnsupportedMathOperationException("Please set a numeric value");
+		}
+		
+		if(numberTwo.contentEquals("0")) {
+			
+			throw new UnsupportedMathOperationException("Divide operation not support to divide for 0");
+		}
+		
+		return convertToDouble(numberOne) / convertToDouble(numberTwo);
+	}
+	
+	@RequestMapping(value="/avrg/{numberOne}/{numberTwo}")
+	public Double avrg (
+			@PathVariable(value="numberOne")String numberOne,		
+			@PathVariable(value="numberTwo")String numberTwo) throws Exception{
+		
+		if(!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+			throw new UnsupportedMathOperationException("Please set a numeric value");
+		}
+		
+		return (convertToDouble(numberOne) + convertToDouble(numberTwo))/2;
+	}
+	
+	@RequestMapping(value="/sqrroot/{numberOne}")
+	public Double sqrroot (
+			@PathVariable(value="numberOne")String numberOne) throws Exception{
+		
+		if(!isNumeric(numberOne)) {
+			throw new UnsupportedMathOperationException("Please set a numeric value");
+		}
+		
+		if(convertToDouble(numberOne)<0) {
+			throw new UnsupportedMathOperationException("Do not exists square root for a negative number");
+		}
+		
+		return Math.sqrt(convertToDouble(numberOne));
+	}
 	
 
 	private Double convertToDouble(String strNumber) {
