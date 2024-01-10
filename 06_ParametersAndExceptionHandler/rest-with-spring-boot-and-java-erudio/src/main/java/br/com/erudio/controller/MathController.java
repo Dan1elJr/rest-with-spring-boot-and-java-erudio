@@ -102,7 +102,7 @@ public class MathController {
 			throw new UnsupportedMathOperationException("Do not exists square root for a negative number");
 		}
 		
-		return Math.sqrt(ConvertNumbers.convertToDouble(numberOne));
+		return MathOperations.sqrroot(ConvertNumbers.convertToDouble(numberOne));
 	}
 	
 }

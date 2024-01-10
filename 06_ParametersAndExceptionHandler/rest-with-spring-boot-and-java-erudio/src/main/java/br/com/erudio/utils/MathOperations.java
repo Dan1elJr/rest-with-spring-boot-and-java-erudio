@@ -1,6 +1,7 @@
 package br.com.erudio.utils;
 
 public class MathOperations {
+	
 	public static Double sum(Double numberOne, Double numberTwo) {
 
 		return numberOne + numberTwo;
@@ -23,8 +24,12 @@ public class MathOperations {
 	
 	public static Double avrg (Double numberOne, Double numberTwo) {
 
-		return (numberOne *  numberTwo)/2;
+		return (numberOne +  numberTwo)/2;
 	}
-		
+	
+	public static Double sqrroot (Double numberOne) {
+
+		return Math.sqrt(numberOne);
+	}
 	
 }
