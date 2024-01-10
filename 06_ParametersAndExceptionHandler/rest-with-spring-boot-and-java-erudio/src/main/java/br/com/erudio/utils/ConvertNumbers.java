@@ -1,4 +1,4 @@
-package br.com.erudio.controller.utils;
+package br.com.erudio.utils;
 
 public class ConvertNumbers {
 	

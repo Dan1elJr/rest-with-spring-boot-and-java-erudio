@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.erudio.controller.utils.CheckNumbers;
-import br.com.erudio.controller.utils.ConvertNumbers;
 import br.com.erudio.exceptions.UnsupportedMathOperationException;
+import br.com.erudio.utils.CheckNumbers;
+import br.com.erudio.utils.ConvertNumbers;
+import br.com.erudio.utils.MathOperations;
 
 @RestController
 public class MathController {
@@ -27,10 +28,11 @@ public class MathController {
 			throw new UnsupportedMathOperationException("Please set a numeric value");
 		}
 		
-		return ConvertNumbers.convertToDouble(numberOne) + ConvertNumbers.convertToDouble(numberTwo);
+		return MathOperations.sum(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
 	}
 	
-	@RequestMapping(value="/dif/{numberOne}/{numberTwo}")
+	@RequestMapping(value="/dif/{numberOne}/{numberTwo}",
+			method=RequestMethod.GET)
 	public Double dif (
 			@PathVariable(value="numberOne")String numberOne,		
 			@PathVariable(value="numberTwo")String numberTwo) throws Exception{
@@ -39,10 +41,11 @@ public class MathController {
 			throw new UnsupportedMathOperationException("Please set a numeric value");
 		}
 		
-		return ConvertNumbers.convertToDouble(numberOne) - ConvertNumbers.convertToDouble(numberTwo);
+		return MathOperations.dif(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
 	}
 	
-	@RequestMapping(value="/mult/{numberOne}/{numberTwo}")
+	@RequestMapping(value="/mult/{numberOne}/{numberTwo}",
+			method=RequestMethod.GET)
 	public Double mult (
 			@PathVariable(value="numberOne")String numberOne,		
 			@PathVariable(value="numberTwo")String numberTwo) throws Exception{
@@ -51,11 +54,12 @@ public class MathController {
 			throw new UnsupportedMathOperationException("Please set a numeric value");
 		}
 		
-		return ConvertNumbers.convertToDouble(numberOne) * ConvertNumbers.convertToDouble(numberTwo);
+		return MathOperations.mult(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
 	}
 	
 	
-	@RequestMapping(value="/div/{numberOne}/{numberTwo}")
+	@RequestMapping(value="/div/{numberOne}/{numberTwo}",
+			method=RequestMethod.GET)
 	public Double div (
 			@PathVariable(value="numberOne")String numberOne,		
 			@PathVariable(value="numberTwo")String numberTwo) throws Exception{
@@ -69,10 +73,11 @@ public class MathController {
 			throw new UnsupportedMathOperationException("Divide operation not support to divide for 0");
 		}
 		
-		return ConvertNumbers.convertToDouble(numberOne) / ConvertNumbers.convertToDouble(numberTwo);
+		return MathOperations.div(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
 	}
 	
-	@RequestMapping(value="/avrg/{numberOne}/{numberTwo}")
+	@RequestMapping(value="/avrg/{numberOne}/{numberTwo}",
+			method=RequestMethod.GET)
 	public Double avrg (
 			@PathVariable(value="numberOne")String numberOne,		
 			@PathVariable(value="numberTwo")String numberTwo) throws Exception{
@@ -81,10 +86,11 @@ public class MathController {
 			throw new UnsupportedMathOperationException("Please set a numeric value");
 		}
 		
-		return (ConvertNumbers.convertToDouble(numberOne) + ConvertNumbers.convertToDouble(numberTwo))/2;
+		return MathOperations.avrg(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
 	}
 	
-	@RequestMapping(value="/sqrroot/{numberOne}")
+	@RequestMapping(value="/sqrroot/{numberOne}",
+			method=RequestMethod.GET)
 	public Double sqrroot (
 			@PathVariable(value="numberOne")String numberOne) throws Exception{
 		
