@@ -2,11 +2,11 @@ package br.com.erudio.controller;
 
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import br.com.erudio.exceptions.UnsupportedMathOperationException;
 import br.com.erudio.utils.CheckNumbers;
 import br.com.erudio.utils.ConvertNumbers;
@@ -18,6 +18,10 @@ public class MathController {
 	
 	private static final AtomicLong counter = new AtomicLong();
 	
+	
+	@Autowired
+	MathOperations math;
+	
 	@RequestMapping(value ="/sum/{numberOne}/{numberTwo}",
 			method=RequestMethod.GET)
 	public Double sum (
@@ -28,7 +32,7 @@ public class MathController {
 			throw new UnsupportedMathOperationException("Please set a numeric value");
 		}
 		
-		return MathOperations.sum(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
+		return math.sum(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
 	}
 	
 	@RequestMapping(value="/dif/{numberOne}/{numberTwo}",
@@ -41,7 +45,7 @@ public class MathController {
 			throw new UnsupportedMathOperationException("Please set a numeric value");
 		}
 		
-		return MathOperations.dif(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
+		return math.dif(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
 	}
 	
 	@RequestMapping(value="/mult/{numberOne}/{numberTwo}",
@@ -54,7 +58,7 @@ public class MathController {
 			throw new UnsupportedMathOperationException("Please set a numeric value");
 		}
 		
-		return MathOperations.mult(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
+		return math.mult(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
 	}
 	
 	
@@ -73,7 +77,7 @@ public class MathController {
 			throw new UnsupportedMathOperationException("Divide operation not support to divide for 0");
 		}
 		
-		return MathOperations.div(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
+		return math.div(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
 	}
 	
 	@RequestMapping(value="/avrg/{numberOne}/{numberTwo}",
@@ -86,7 +90,7 @@ public class MathController {
 			throw new UnsupportedMathOperationException("Please set a numeric value");
 		}
 		
-		return MathOperations.avrg(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
+		return math.avrg(ConvertNumbers.convertToDouble(numberOne),ConvertNumbers.convertToDouble(numberTwo));
 	}
 	
 	@RequestMapping(value="/sqrroot/{numberOne}",
@@ -102,7 +106,7 @@ public class MathController {
 			throw new UnsupportedMathOperationException("Do not exists square root for a negative number");
 		}
 		
-		return MathOperations.sqrroot(ConvertNumbers.convertToDouble(numberOne));
+		return math.sqrroot(ConvertNumbers.convertToDouble(numberOne));
 	}
 	
 }
