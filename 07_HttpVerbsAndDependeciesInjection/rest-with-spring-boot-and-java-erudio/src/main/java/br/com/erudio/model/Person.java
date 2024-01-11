@@ -19,9 +19,7 @@ public class Person implements Serializable {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 
 	public String getFirstName() {
 		return firstName;
@@ -31,12 +29,12 @@ public class Person implements Serializable {
 		this.firstName = firstName;
 	}
 
-	public String getLasttName() {
+	public String getLastName() {
 		return lastName;
 	}
 
-	public void setLastName(String lasttName) {
-		this.lastName = lasttName;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getAddress() {
@@ -53,6 +51,10 @@ public class Person implements Serializable {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	@Override
