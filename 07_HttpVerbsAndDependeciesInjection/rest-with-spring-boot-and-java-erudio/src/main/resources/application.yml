@@ -13,4 +13,5 @@ spring:
       #hibernate:
         #dialect: org.hibernate.dialect.MySQLDialect
       show-sql:  false
-           
+server:
+  port: 8081          

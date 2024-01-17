@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 
-public class PersonVo implements Serializable {
+public class PersonVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Long id;
@@ -13,7 +13,7 @@ public class PersonVo implements Serializable {
 	private String address;
 	private String gender;
 	
-	public PersonVo() {}
+	public PersonVO() {}
 
 	public Long getId() {
 		return id;
@@ -70,7 +70,7 @@ public class PersonVo implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PersonVo other = (PersonVo) obj;
+		PersonVO other = (PersonVO) obj;
 		return Objects.equals(id, other.id);
 	}
 }
