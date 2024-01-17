@@ -18,31 +18,31 @@ public class PersonServices {
 	@Autowired
 	PersonRepository repository;
 	
-	public List<Person> findAll() {
+	public List<PersonVo> findAll() {
 		
 		logger.info("Finding all people");	
 		
 		return repository.findAll();
 	}
 	
-	public Person findById(Long id) {
+	public PersonVo findById(Long id) {
 		
 		logger.info("Finding one person!");
 	
 		return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No record founds for this ID"));
 	}
 	
-	public Person create (Person person) {
+	public PersonVo create (PersonVo person) {
 		
 		logger.info("Creating one person!");
 		
 		return repository.save(person);
 	}
 	
-	public Person update (Person person) {
+	public PersonVo update (PersonVo person) {
 		logger.info("Updating one person!");
 		
-		Person entity = repository.findById(person.getId()).
+		PersonVo entity = repository.findById(person.getId()).
 			orElseThrow(() -> new ResourceNotFoundException("No record founds for this ID"));
 		
 		entity.setFirstName(person.getFirstName());
@@ -55,7 +55,7 @@ public class PersonServices {
 	
 	public void delete (Long id) {
 		logger.info("Deleting one person!");
-		Person entity = repository.findById(id).
+		PersonVo entity = repository.findById(id).
 				orElseThrow(() -> new ResourceNotFoundException("No record founds for this ID"));
 		
 		repository.delete(entity);
