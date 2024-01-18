@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import br.com.erudio.data.vo.v1.PersonVO;
 import br.com.erudio.exceptions.ResourceNotFoundException;
 import br.com.erudio.mapper.DozerMapper;
+import br.com.erudio.model.Person;
 import br.com.erudio.repositories.PersonRepository;
 
 @Service
@@ -39,13 +40,15 @@ public class PersonServices {
 		
 		logger.info("Creating one person!");
 		
-		return repository.save(person);
+		var entity = DozerMapper.parseObject(person, Person.class);
+		var vo = DozerMapper.parseObject(entity, PersonVO.class);
+		return vo;
 	}
 	
 	public PersonVO update (PersonVO person) {
 		logger.info("Updating one person!");
 		
-		PersonVO entity = repository.findById(person.getId()).
+		var entity = repository.findById(person.getId()).
 			orElseThrow(() -> new ResourceNotFoundException("No record founds for this ID"));
 		
 		entity.setFirstName(person.getFirstName());
@@ -53,12 +56,14 @@ public class PersonServices {
 		entity.setAddress(person.getAddress());
 		entity.setGender(person.getGender());
 		
-		return repository.save(entity);
+		var vo = DozerMapper.parseObject(repository.save(entity), PersonVO.class);
+		
+		return vo;
 	}
 	
 	public void delete (Long id) {
 		logger.info("Deleting one person!");
-		PersonVO entity = repository.findById(id).
+		var entity = repository.findById(id).
 				orElseThrow(() -> new ResourceNotFoundException("No record founds for this ID"));
 		
 		repository.delete(entity);
