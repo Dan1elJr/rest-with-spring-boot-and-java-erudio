@@ -22,8 +22,6 @@ public class PersonVOV2 implements Serializable {
 		return id;
 	}
 
-	
-
 	public String getFirstName() {
 		return firstName;
 	}
@@ -62,6 +60,10 @@ public class PersonVOV2 implements Serializable {
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	@Override
