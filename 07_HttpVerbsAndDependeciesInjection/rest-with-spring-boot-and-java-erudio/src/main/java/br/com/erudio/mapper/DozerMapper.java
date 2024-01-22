@@ -2,9 +2,9 @@ package br.com.erudio.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.github.dozermapper.core.Mapper;
 
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
-import com.github.dozermapper.core.Mapper;
 
 //Classe Mapeadora de entidades
 public class DozerMapper {
