@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class PersonVOV2 implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
 	private Long id;
 	private String firstName;
 	private String lastName;
