@@ -13,14 +13,11 @@ public class WebConfig implements WebMvcConfigurer {
 		//https://www.baeldung.com/spring-mvc-content-negotiation-json-xml
 		
 		configurer.favorParameter(true)
-		.parameterName("mediaType").ignoreAcceptHeader(true)
+		.parameterName("mediaType")
+		.ignoreAcceptHeader(true)
 		.useRegisteredExtensionsOnly(false)
 		.defaultContentType(MediaType.APPLICATION_JSON)
 		.mediaType("json", MediaType.APPLICATION_JSON)
 		.mediaType("xml", MediaType.APPLICATION_XML);
-	}
-	
-	
-	
-	
+	}	
 }
